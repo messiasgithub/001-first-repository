@@ -50,6 +50,12 @@ p.mix {border-style: dotted dashed solid double;}
     <img src="logo.png" alt="Canterbury Techinical Institute">
   </div>
 
+  <div style="text-align: right;">
+    <h3>Filter by Unit</h3>
+    <input type="text" class="filter">
+    <button class="btnFilter" >Filter</button>
+  </div>
+
 <p class="solid" id="demo2"></p>
 
 <ul class=solid id="demo3"></ul>
@@ -1217,6 +1223,22 @@ console.dir(myObj4);
   }
 
 }
+
+$('.btnFilter').on("click", function() {
+  var text = $('input.filter').val().toLowerCase();
+  if (text) {
+    $("li.unit").each(function(idx, element) {
+      var title = $(element).find('h3');
+      if (!title.text().toLowerCase().includes(text)) {
+        $(element).hide();
+      }
+    });
+  } else {
+    $("li.unit").each(function(idx, element) {
+      $(element).show();
+    });
+  }
+})
 
 </script>
 </body>
